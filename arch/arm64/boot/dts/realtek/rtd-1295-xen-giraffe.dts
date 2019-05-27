@@ -1,0 +1,56 @@
+/dts-v1/;
+#include "../../../../../include/soc/realtek/memory.h"
+
+/memreserve/ SYS_BOOTCODE_MEMBASE       SYS_BOOTCODE_MEMSIZE        ; /* 0x00000000 ~ 0x00030000 */
+/memreserve/ RPC_COMM_PHYS              RPC_COMM_SIZE               ; /* 0x0001f000 ~ 0x001fffff */
+/memreserve/ ION_MEDIA_HEAP_PHYS1       ION_MEDIA_HEAP_SIZE1        ; /* 0x02900000 ~ 0x08cfffff */
+/memreserve/ ACPU_FIREWARE_PHYS         ACPU_FIREWARE_SIZE          ; /* 0x01b00000 ~ 0x01efffff */
+/memreserve/ ION_AUDIO_HEAP_PHYS        ION_AUDIO_HEAP_SIZE         ; /* 0x02600000 ~ 0x028fffff */
+/memreserve/ RPC_RINGBUF_PHYS           RPC_RINGBUF_SIZE            ; /* 0x01ffe000 ~ 0x02001fff */
+/memreserve/ ION_MEDIA_HEAP_PHYS2       ION_MEDIA_HEAP_SIZE2        ; /* 0x11000000 ~ 0x141fffff */
+/memreserve/ ACPU_IDMEM_PHYS            ACPU_IDMEM_SIZE             ; /* 0x10000000 ~ 0x10013fff */
+/memreserve/ ACPU_BOOTCODE_PHYS         ACPU_BOOTCODE_SIZE          ; /* 0x10000000 ~ 0x10013fff */
+/memreserve/ ROOTFS_NORMAL_START        ROOTFS_NORMAL_SIZE          ; /* RootFS */
+
+#include "rtd-1295-xen.dtsi"
+#include "rtd-129x-dvfs.dtsi"
+#include "rtd-1295-xen-giraffe-common.dtsi"
+
+/ {
+
+    memory {
+        device_type = "memory";
+        reg = <0 0x40000000>;   /* 1024 MB */
+    };
+
+    mem_remap {
+        compatible = "Realtek,rtk1295-mem_remap";
+        reg = <RBUS_BASE_PHYS RBUS_BASE_SIZE>,
+              <RPC_COMM_PHYS RPC_COMM_SIZE>,
+              <ION_MEDIA_HEAP_PHYS1 ION_MEDIA_HEAP_SIZE1>,
+              <ACPU_FIREWARE_PHYS ACPU_FIREWARE_SIZE>,
+              <ION_AUDIO_HEAP_PHYS ION_AUDIO_HEAP_SIZE>,
+              <RPC_RINGBUF_PHYS RPC_RINGBUF_SIZE>,
+              <ION_MEDIA_HEAP_PHYS2 ION_MEDIA_HEAP_SIZE2>,
+              <ACPU_IDMEM_PHYS ACPU_IDMEM_SIZE>,
+              <ACPU_BOOTCODE_PHYS ACPU_BOOTCODE_SIZE>;
+    };
+
+    rtk,ion {
+        rtk,ion-heap@8 {    /* Audio */
+            compatible = "Realtek,rtk-ion-reserve";
+            reg = <8>;
+            rtk,memory-reserve = <
+                ION_AUDIO_HEAP_PHYS ION_AUDIO_HEAP_SIZE ION_AUDIO_HEAP_FLAG
+                >;
+        };
+        rtk,ion-heap@7 {    /* TYPE_MEDIA */
+            compatible = "Realtek,rtk-ion-reserve";
+            reg = <7>;
+            rtk,memory-reserve = <
+                ION_MEDIA_HEAP_PHYS1 ION_MEDIA_HEAP_SIZE1 ION_MEDIA_HEAP_FLAG1
+                ION_MEDIA_HEAP_PHYS2 ION_MEDIA_HEAP_SIZE2 ION_MEDIA_HEAP_FLAG2
+                >;
+        };
+    };
+};

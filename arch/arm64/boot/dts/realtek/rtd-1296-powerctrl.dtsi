@@ -1,0 +1,211 @@
+/include/ "rtd-129x-powerctrl.dtsi"
+
+/{
+    power_control  {
+
+        pctrl_clk_en@9800000c {
+            mask = <0x28A03012>;
+            power-state = "off";
+        };
+
+        pctrl_clk_en@98000010 {
+            mask = <0x0100E0A2>;
+            power-state = "off";
+        };
+
+        pctrl_clk_en@9800708c {
+            mask = <0x000006F8>;
+            power-state = "off";
+        };
+
+        pctrl_soft_reset@98000000 {
+            mask = <0x68000354>;
+            power-state = "off";
+        };
+
+        pctrl_soft_reset@98000004 {
+            mask = <0x507BE1FC>;
+            power-state = "off";
+        };
+
+        pctrl_soft_reset@98000050 {
+            mask = <0x00007020>;
+            power-state = "off";
+        };
+
+        pctrl_soft_reset@98007088 {
+            mask = <0x00002062>;
+            power-state = "off";
+        };
+
+        /* VE1 */
+        pctrl_ve1 {
+        };
+
+        /* VE2 */
+        pctrl_ve2 {
+        };
+
+        /* VE3*/
+        pctrl_ve3 {
+        };
+
+        /* JPEG */
+
+        /* GPU */
+        pctrl_gpu {
+        };
+
+        pctrl_gpu_core@1 {
+        };
+
+        pctrl_gpu_core@2 {
+        };
+
+        pctrl_gpu_core@3 {
+        };
+
+        /* DISP_TOP */
+        pctrl_disp_top {
+        };
+
+        /* VO */
+
+        /* AIO */
+        pctrl_audio_dac {
+            power-state = "off";
+        };
+
+        /* TVE */
+        pctrl_video_dac { 
+            power-state = "off";
+        };
+
+        /* HDMI_TX 2.0 */
+        pctrl_mhl3_en {
+            power-state = "off";
+        };
+
+        /* SE */
+
+        /* MIPI_CSI */
+
+        pctrl_mipi_aphy {
+        };
+
+        /* LVDS TX */
+
+        /* ACPU */
+
+        /* C_BUS */
+        pctrl_cbus {
+        };
+
+        /* ETN */
+        pctrl_etn_gphy {
+        };        
+
+        /* SCPU: scpu_wrapper */
+
+        /* acpu_sys_wrapper */
+    
+        /* AE: ae_sys_wrapper */
+
+        /* SB2 */
+
+        /* TP */
+
+        /* MD */
+
+        /* RSA */
+
+        /* SATA 2.0 2port (MAC) */ 
+   
+        /* CP */
+
+        /* NAND */
+
+        /* USB: P0 */
+        pctrl_usb_p0_phy {
+        };
+
+        pctrl_usb_p0_mac {
+        };
+
+        /* USB: P1 */
+
+        /* USB: P2 */
+
+        /* USB: P3 */
+        pctrl_usb_p3_phy {
+            power-state = "on";
+        };
+
+        pctrl_usb_p3_mac_A {
+            power-state = "on";
+        };
+
+        pctrl_usb_p3_mac_ECO_B {
+            power-state = "on";
+        };
+
+        /* PCIe 1.1(MAC) */
+
+        /* PCIE 2.0(MAC) */
+
+        /* MISC */     
+
+        /* Card Reader: CR */
+        pctrl_cr {
+        };
+
+        /* eMMC */
+
+        /* SDIO */
+        pctrl_sdio {
+        };
+
+        /* HW_NAT */
+        pctrl_nat {
+        };
+
+        /* HDMI_RX wrap + MHL2 */
+        pctrl_hdmirx {
+        };
+
+        /* dc_phy0 */        
+
+        /* dc_phy1 */
+
+        /* ADC */
+        pctrl_adc {
+            power-state = "off";
+        };
+
+        /* CEC RX */
+        pctrl_cecrx_aphy {
+        };
+
+        /* CEC TX*/
+        pctrl_cectx_aphy {
+        };
+
+        /* PLL_VE1 */
+        pctrl_pll_ve1 {
+        };
+
+        /* RTC */
+        pctrl_rtc {
+        };
+
+        /* JD_TOP */
+        pctrl_jd_top {
+        };
+
+        /* LSADC_TOP */
+        pctrl_lsadc_top {
+        };
+        
+        /* ISO */
+    };
+};

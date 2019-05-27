@@ -1,0 +1,7 @@
+config RTK_HDCPRX_2P2
+	tristate "HDCP RX 2.2 for Realtek platform"
+	select RTK_HDMIRX
+	default n
+	---help---
+	  Say Y, if you want to enable HDCP RX 2.2 driver on Realtek platform.
+

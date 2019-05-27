@@ -1,0 +1,14 @@
+
+comment "RealTek XEN support features"
+
+menu "Realtek XEN Features"
+
+config RTK_DOMU_DMA
+	bool "Realtek XEN DomU DMA zone support"
+	depends on RTK_XEN_SUPPORT
+	default y
+	help
+	  DomU contiguous memory region support, Target
+	  region should be memory reserved in dts.
+
+endmenu #RTD1295 Device Drivers
